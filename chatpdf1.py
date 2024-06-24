@@ -72,7 +72,7 @@ def get_conversational_chain():
 def user_input(user_question):
     embeddings = GoogleGenerativeAIEmbeddings(model = "models/embedding-001")
     
-    new_db = FAISS.load_local("faiss_index", embeddings)
+    new_db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
     docs = new_db.similarity_search(user_question)
 
     chain = get_conversational_chain()
@@ -86,14 +86,7 @@ def user_input(user_question):
     st.write("Reply: ", response["output_text"])
 
 
-directory='/content/Legaldata'
-def load_docs(directory):
-  loader=DirectoryLoader(directory)
-  documents=loader.load()
-  return documents
 
-documents =load_docs(directory)
-len(documents)
 
 
 def extract_text_from_pdfs(directory):
@@ -120,6 +113,11 @@ def extract_text_from_pdfs(directory):
 
 
 def main():
+    # directory_path = 'Legaldata'  # Replace with the path to your directory
+    # text = extract_text_from_pdfs(directory_path)
+    # # raw_text = get_pdf_text(pdf_docs)
+    # text_chunks = get_text_chunks(text)
+    # get_vector_store(text_chunks)
     st.set_page_config("Chat PDF")
     st.header("Chat with PDF using Gemini💁")
 
@@ -127,16 +125,16 @@ def main():
 
     if user_question:
         user_input(user_question)
-        get_vector_store(text_chunks)
+       
 
     # with st.sidebar:
     #     st.title("Menu:")
     #     pdf_docs = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True)
     #     if st.button("Submit & Process"):
     #         with st.spinner("Processing..."):
-    #             raw_text = get_pdf_text(pdf_docs)
-    #             text_chunks = get_text_chunks(raw_text)
-    #             get_vector_store(text_chunks)
+                # raw_text = get_pdf_text(pdf_docs)
+                # text_chunks = get_text_chunks(raw_text)
+                # get_vector_store(text_chunks)
     #             st.success("Done")
 
 
