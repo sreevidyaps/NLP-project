@@ -113,11 +113,11 @@ def extract_text_from_pdfs(directory):
 
 
 def main():
-    directory_path = 'Legaldata'  # Replace with the path to your directory
-    text = extract_text_from_pdfs(directory_path)
-    # raw_text = get_pdf_text(pdf_docs)
-    text_chunks = get_text_chunks(text)
-    get_vector_store(text_chunks)
+    # directory_path = 'Legaldata'  # Replace with the path to your directory
+    # text = extract_text_from_pdfs(directory_path)
+    # # raw_text = get_pdf_text(pdf_docs)
+    # text_chunks = get_text_chunks(text)
+    # get_vector_store(text_chunks)
     st.set_page_config("LawGenie2")
     st.header("LawGenie")
     st.info("Your Virtual Legal Expert")
