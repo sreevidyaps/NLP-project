@@ -1,4 +1,4 @@
-streamlit
+
 PyPDF2
 langchain
 langchain_google_genai
@@ -6,3 +6,4 @@ google-generativeai
 faiss-cpu
 python-dotenv
 pdfreader
+langchain-community
