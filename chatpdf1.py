@@ -51,14 +51,14 @@ def get_vector_store(text_chunks):
 def get_conversational_chain():
 
     prompt_template = """
-    Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
-    provided context just say, "answer is not available in the context", don't provide the wrong answer\n\n
+vbb    Answer the question as detailed as possible from the provided context, make sure to provide all the details. 
+    If context is insufficient or irrelevant, exercise your knowledge of Indian legal frameworks to provide actionable advice. 
+    Avoid speculative content and prioritize realism and practicality.\n\n
     Context:\n {context}?\n
     Question: \n{question}\n
 
     Answer:
     """
-
     model = ChatGoogleGenerativeAI(model="gemini-pro",
                              temperature=0.3)
 
@@ -79,7 +79,7 @@ def user_input(user_question):
 
     
     response = chain(
-        {"input_documents":docs, "question": user_question}
+        {"input_documents":docs, "context" : docs, "question": user_question}
         , return_only_outputs=True)
 
     print(response)
@@ -113,12 +113,12 @@ def extract_text_from_pdfs(directory):
 
 
 def main():
-    # directory_path = 'Legaldata'  # Replace with the path to your directory
-    # text = extract_text_from_pdfs(directory_path)
-    # # raw_text = get_pdf_text(pdf_docs)
-    # text_chunks = get_text_chunks(text)
-    # get_vector_store(text_chunks)
-    st.set_page_config("LawGenie")
+    directory_path = 'Legaldata'  # Replace with the path to your directory
+    text = extract_text_from_pdfs(directory_path)
+    # raw_text = get_pdf_text(pdf_docs)
+    text_chunks = get_text_chunks(text)
+    get_vector_store(text_chunks)
+    st.set_page_config("LawGenie2")
     st.header("LawGenie")
     st.info("Your Virtual Legal Expert")
     user_question = st.text_area("Ask your questions")
