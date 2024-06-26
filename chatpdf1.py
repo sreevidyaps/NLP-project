@@ -113,7 +113,7 @@ def extract_text_from_pdfs(directory):
 
 
 def main():
-    # directory_path = 'Legaldata'  # Replace with the path to your directory
+    # directory_path = 'Legaldata'  
     # text = extract_text_from_pdfs(directory_path)
     # # raw_text = get_pdf_text(pdf_docs)
     # text_chunks = get_text_chunks(text)
