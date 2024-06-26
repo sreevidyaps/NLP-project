@@ -118,7 +118,7 @@ def main():
     # # raw_text = get_pdf_text(pdf_docs)
     # text_chunks = get_text_chunks(text)
     # get_vector_store(text_chunks)
-    st.set_page_config("LawGenie2")
+    st.set_page_config("LawGenie")
     st.header("LawGenie")
     st.info("Your Virtual Legal Expert")
     user_question = st.text_area("Ask your questions")
